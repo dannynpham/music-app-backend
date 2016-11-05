@@ -83,8 +83,8 @@ ActiveRecord::Schema.define(version: 20161105230511) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "first_name"
-    t.string   "last_name"
+    t.string   "first_name",                               null: false
+    t.string   "last_name",                                null: false
     t.string   "image"
     t.string   "email",                                    null: false
     t.json     "tokens"
