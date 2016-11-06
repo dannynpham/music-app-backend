@@ -20,7 +20,7 @@ users.each do |user|
 end
 
 Playlist.all.each do |playlist|
-  rand(5..15).times do
+  rand(2..5).times do
     begin
       spotify_track = RSpotify::Track.search(Faker::Hipster.word).first
       while spotify_track.nil? do
