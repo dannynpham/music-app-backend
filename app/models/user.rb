@@ -4,4 +4,5 @@ class User < ActiveRecord::Base
           :rememberable, :trackable, :validatable, :omniauthable#, :confirmable
   include DeviseTokenAuth::Concerns::User
   has_many :friends, :class_name => 'UserFriend'
+  has_many :playlists
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161105230511) do
+ActiveRecord::Schema.define(version: 20161106004729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,12 +52,20 @@ ActiveRecord::Schema.define(version: 20161105230511) do
     t.index ["user_id"], name: "index_playlists_on_user_id", using: :btree
   end
 
+  create_table "track_genres", id: false, force: :cascade do |t|
+    t.integer  "track_id"
+    t.integer  "genre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_track_genres_on_genre_id", using: :btree
+    t.index ["track_id"], name: "index_track_genres_on_track_id", using: :btree
+  end
+
   create_table "tracks", force: :cascade do |t|
     t.string   "name"
     t.string   "artist"
     t.integer  "duration"
     t.integer  "album_id"
-    t.integer  "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -99,5 +107,7 @@ ActiveRecord::Schema.define(version: 20161105230511) do
   add_foreign_key "playlist_tracks", "playlists"
   add_foreign_key "playlist_tracks", "tracks"
   add_foreign_key "playlists", "users"
+  add_foreign_key "track_genres", "genres"
+  add_foreign_key "track_genres", "tracks"
   add_foreign_key "user_friends", "users"
 end
