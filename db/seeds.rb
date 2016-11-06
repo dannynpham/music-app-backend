@@ -14,7 +14,7 @@ users.each do |user|
 end
 
 users.each do |user|
-  rand(1..10).times do
+  rand(1..3).times do
     Playlist.create(name: Faker::Pokemon.name, user: user)
   end
 end
