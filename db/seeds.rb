@@ -1,13 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-users =
-20.times.map do
+users = 20.times.map do
   User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -31,11 +22,6 @@ end
 Playlist.all.each do |playlist|
   rand(5..15).times do
     begin
-      spotify_track = RSpotify::Track.search(Faker::Hipster.word).first
-      while spotify_track.nil? do
-        spotify_track = RSpotify::Track.search(Faker::Hipster.word).first
-      end
-    rescue
       spotify_track = RSpotify::Track.search(Faker::Hipster.word).first
       while spotify_track.nil? do
         spotify_track = RSpotify::Track.search(Faker::Hipster.word).first
