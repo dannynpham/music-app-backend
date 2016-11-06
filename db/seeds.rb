@@ -31,6 +31,11 @@ Playlist.all.each do |playlist|
       while spotify_track.nil? do
         spotify_track = RSpotify::Track.search(Faker::Hipster.word).first
       end
+    rescue
+      spotify_track = RSpotify::Track.search(Faker::Hipster.word).first
+      while spotify_track.nil? do
+        spotify_track = RSpotify::Track.search(Faker::Hipster.word).first
+      end
     ensure
       spotify_track = RSpotify::Track.search(Faker::Hipster.word).first
       while spotify_track.nil? do
