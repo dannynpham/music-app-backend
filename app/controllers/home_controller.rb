@@ -1,5 +1,6 @@
 class HomeController < ActionController::Base
   def index
-    @artists = RSpotify::Artist.search('blink')
+    @word = Faker::Hipster.word
+    @artists = RSpotify::Artist.search(@word)
   end
 end
